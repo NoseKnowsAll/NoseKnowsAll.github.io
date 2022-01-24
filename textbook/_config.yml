@@ -1,0 +1,46 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Programming for Mathematical Applications
+author: Per-Olof Persson, Michael Franco, and Robert Sweeney Blanco
+copyright : "2022"
+email: persson@berkeley.edu
+description: This is the textbook for UC Berkeley's MATH 124.
+logo: content/logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: 'off'
+  allow_errors : true
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Download settings
+use_download_button              : true  # If 'true', display a button to download a zip file for the notebook
+download_button_text             : "Download" # The text that download buttons will contain
+download_page_header             : "Programming for Mathematical Applications" # A header that will be displayed at the top of and PDF-printed page
+
+######## Interact link settings
+launch_buttons:
+  notebook_interface : "classic"
+  binderhub_url : "https://julia.datahub.berkeley.edu"
+
+# Information about where the book exists on the web
+repository:
+  url: https://robertsweeneyblanco.github.io/ # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
