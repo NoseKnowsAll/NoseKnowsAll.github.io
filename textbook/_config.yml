@@ -27,5 +27,5 @@ launch_buttons:
 repository:
   url: https://github.com/NoseKnowsAll/NoseKnowsAll.github.io
   path_to_book: textbook  # Path to the book, relative to the repository root
-  branch: master
+  branch: main
 
