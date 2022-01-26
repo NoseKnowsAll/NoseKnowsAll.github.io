@@ -1,8 +1,8 @@
 using PyPlot  # Packages used
 
 struct Vertex
-    neighbors::Vector{Int}
-    coordinates::Vector{Float64}
+    neighbors::Vector{Int}       # Indices of neighbors of this Vertex 
+    coordinates::Vector{Float64} # 2D coordinates of this Vertex - only for plotting
     Vertex(neighbors; coordinates=[0,0]) = new(neighbors, coordinates)
 end
 
@@ -26,7 +26,7 @@ v3 = Vertex([], coordinates=[-1,1])
 v4 = Vertex([2], coordinates=[2,2])
 g = Graph([v1,v2,v3,v4])
 
-function plot_graph(g::Graph; scale=1.0)
+function PyPlot.plot(g::Graph; scale=1.0)
     fig, ax = subplots()
     ax.set_aspect("equal")
     
@@ -56,7 +56,7 @@ function plot_graph(g::Graph; scale=1.0)
         end
     end
 end
-plot_graph(g)
+plot(g)
 
 function circle_graph(nv=8)
     g = Graph([])
@@ -69,7 +69,7 @@ function circle_graph(nv=8)
 end
 
 g = circle_graph(10)
-plot_graph(g)
+plot(g)
 
 g = circle_graph(10)
 
@@ -98,4 +98,4 @@ for v in g.vertices
     filter!(i -> i != 8, v.neighbors)
 end
 
-plot_graph(g)
+plot(g)

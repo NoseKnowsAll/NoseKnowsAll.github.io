@@ -1,8 +1,8 @@
 using PyPlot 
 
 struct Vertex
-    neighbors::Vector{Int}
-    coordinates::Vector{Float64}
+    neighbors::Vector{Int}       # Indices of neighbors of this Vertex 
+    coordinates::Vector{Float64} # 2D coordinates of this Vertex - only for plotting
     Vertex(neighbors; coordinates=[0,0]) = new(neighbors, coordinates)
 end
 
@@ -20,7 +20,7 @@ function Base.show(io::IO, g::Graph)
     end
 end
 
-function plot_graph(g::Graph; scale=1.0)
+function PyPlot.plot(g::Graph; scale=1.0)
     fig, ax = subplots()
     ax.set_aspect("equal")
     
