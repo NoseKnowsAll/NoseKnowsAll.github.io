@@ -851,7 +851,7 @@ following way:</p>
 </div>
 </div>
 </div>
-<p>However, this functions only works if you pass a <code class="docutils literal notranslate"><span class="pre">MyPoly</span></code> type to it. In Julia you can write functions that operate differently on different types. A function which defines the behavior for a specific combination or number of arguments is called a <em>method</em>.</p>
+<p>However, this function should only work if you pass a <code class="docutils literal notranslate"><span class="pre">MyPoly</span></code> type to it. In Julia you can write functions that operate differently on different types. A function which defines the behavior for a specific combination or number of arguments is called a <em>method</em>.</p>
 <p>A function which is specialized for a certain type can be created using a <em>type declaration</em> with the <code class="docutils literal notranslate"><span class="pre">::</span></code> operator. As an example, we create a <code class="docutils literal notranslate"><span class="pre">degree</span></code> function to find the degree <span class="math notranslate nohighlight">\(d\)</span>. The implementation
 is straight-forward, we simply search the for the first (highest degree) non-zero
 coefficient. Note that we define the degree of the zero polynomial to zero.</p>
@@ -1072,7 +1072,8 @@ p(x) &amp;= a_nx^n + a_{n-1} x^{n-1} + \cdots + a_0 \\
 </section>
 <section id="operator-overloading">
 <h2><span class="section-number">11.6. </span>Operator overloading<a class="headerlink" href="#operator-overloading" title="Permalink to this headline">¶</a></h2>
-<p>Operators such as <code class="docutils literal notranslate"><span class="pre">+</span></code> can also be overloaded for new types, by specializing the function definition in the <code class="docutils literal notranslate"><span class="pre">Base</span></code> package. Adding polynomials is of course easy, we simply add the coefficients. However we first need to make sure the coefficient vectors are long enough to contain the sum:</p>
+<p>Operators such as <code class="docutils literal notranslate"><span class="pre">+</span></code> can also be overloaded for new types, by specializing the function definition. These operators are so fundamental to the language itself that they are part of the <code class="docutils literal notranslate"><span class="pre">Base</span></code> package. This special package is automatically included by Julia, so there is no need to call <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">Base</span></code> before using any of its functionality or specify <code class="docutils literal notranslate"><span class="pre">Base.func_name()</span></code> when calling one of its functions. However, when overloading a function in this package, we must still specify that the function is a part of this package with the usual syntax <code class="docutils literal notranslate"><span class="pre">Base.func_name()</span></code>.</p>
+<p>Adding polynomials is of course easy, we simply add the coefficients. However, for our implementation we first need to make sure the coefficient vectors are long enough to contain the sum:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">Base</span><span class="o">.:+</span><span class="p">(</span><span class="n">p1</span><span class="o">::</span><span class="kt">MyPoly</span><span class="p">,</span> <span class="n">p2</span><span class="o">::</span><span class="kt">MyPoly</span><span class="p">)</span>
